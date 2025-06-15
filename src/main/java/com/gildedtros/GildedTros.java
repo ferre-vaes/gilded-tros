@@ -61,4 +61,8 @@ class GildedTros {
             }
         }
     }
+
+    public Item[] getInventory() {
+        return items;
+    }
 }
