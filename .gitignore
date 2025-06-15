@@ -32,7 +32,6 @@ TypeScript/dist
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
@@ -58,3 +57,12 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+.classpath
+.project
+bin/
+.settings/
+
+# Gradle
+.gradle
+/build/
