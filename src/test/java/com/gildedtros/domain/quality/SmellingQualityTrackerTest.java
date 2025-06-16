@@ -1,5 +1,6 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -44,11 +45,12 @@ class SmellingQualityTrackerTest {
     @Test
     @DisplayName("updateQuality increases quality by 1")
     void updateQualityDecreasesByTwo() {
-        int initialQuality = 10;
+        Quality initialQuality = new Quality(10);
+        SellIn sellIn = new SellIn(5);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, 5);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(8, updatedQuality);
+        assertEquals(8, updatedQuality.value());
     }
 
 }

@@ -1,5 +1,7 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
+
 import java.util.List;
 
 public class LegendaryQualityTracker implements QualityTracker {
@@ -16,7 +18,7 @@ public class LegendaryQualityTracker implements QualityTracker {
     }
 
     @Override
-    public int updateQuality(int quality, int sellIn) {
-        return LEGENDARY_QUALITY;
+    public Quality updateQuality(Quality quality, SellIn sellIn) {
+        return Quality.LEGENDARY_QUALITY;
     }
 }

@@ -1,8 +1,8 @@
 package com.gildedtros.domain.quality;
 
-import java.util.List;
+import com.gildedtros.domain.SellIn;
 
-import static com.gildedtros.domain.quality.Quality.increaseQualityByOne;
+import java.util.List;
 
 public class AgingQualityTracker implements QualityTracker {
 
@@ -16,7 +16,7 @@ public class AgingQualityTracker implements QualityTracker {
     }
 
     @Override
-    public int updateQuality(int quality, int sellIn) {
-        return increaseQualityByOne(quality);
+    public Quality updateQuality(Quality quality, SellIn sellIn) {
+        return quality.increaseQualityByOne();
     }
 }

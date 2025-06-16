@@ -1,9 +1,11 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
+
 public interface QualityTracker {
 
     boolean canHandle(String itemName);
 
-    int updateQuality(int quality, int sellIn);
+    Quality updateQuality(Quality quality, SellIn sellIn);
 
 }

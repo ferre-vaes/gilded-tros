@@ -1,4 +1,4 @@
-package com.gildedtros;
+package com.gildedtros.application;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,6 +49,7 @@ class GildedTrosTest {
         app.updateQuality();
 
         assertEquals(11, items[0].quality);
+        assertEquals(1, items[0].sellIn);
     }
 
     @Test

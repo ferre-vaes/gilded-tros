@@ -1,5 +1,6 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,21 +31,23 @@ class AgingQualityTrackerTest {
     @Test
     @DisplayName("updateQuality increases quality by 1")
     void updateQualityIncreasesByOne() {
-        int initialQuality = 10;
+        Quality initialQuality = new Quality(10);
+        SellIn sellIn = new SellIn(5);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, 5);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(11, updatedQuality);
+        assertEquals(11, updatedQuality.value());
     }
 
     @Test
     @DisplayName("updateQuality should not increase quality beyond 50")
     void updateQualityCannotExceedFifty() {
-        int initialQuality = 50;
+        Quality initialQuality = new Quality(50);
+        SellIn sellIn = new SellIn(5);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, 5);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(50, updatedQuality);
+        assertEquals(50, updatedQuality.value());
     }
 
 }

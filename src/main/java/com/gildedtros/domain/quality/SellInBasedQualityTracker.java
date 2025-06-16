@@ -1,9 +1,10 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
+
 import java.util.List;
 
-import static com.gildedtros.domain.quality.Quality.increaseQualityByOne;
-import static com.gildedtros.domain.quality.Quality.increaseQualityTimes;
+import static com.gildedtros.domain.quality.Quality.ZERO_QUALITY;
 
 public class SellInBasedQualityTracker implements QualityTracker{
 
@@ -18,20 +19,20 @@ public class SellInBasedQualityTracker implements QualityTracker{
     }
 
     @Override
-    public int updateQuality(int quality, int sellIn) {
-        if(sellIn == 0) {
-            return 0;
+    public Quality updateQuality(Quality quality, SellIn sellIn) {
+        if(sellIn.value() == 0) {
+            return ZERO_QUALITY;
         }
 
-        if (sellIn <= 10 && sellIn > 5) {
-            return increaseQualityTimes(quality, 2);
+        if (sellIn.value() <= 10 && sellIn.value() > 5) {
+            return quality.increaseQualityTimes(2);
         }
 
-        if (sellIn <= 5) {
-            return increaseQualityTimes(quality, 3);
+        if (sellIn.value() <= 5) {
+            return quality.increaseQualityTimes(3);
         }
 
-        return increaseQualityByOne(quality);
+        return quality.increaseQualityByOne();
     }
 
 }

@@ -8,50 +8,74 @@ class QualityTest {
 
     @Test
     void qualityDecreasesByOne() {
-        int actual = Quality.decreaseQualityByOne(10);
-        assertEquals(9, actual);
+        Quality quality = new Quality(10);
+
+        Quality actual = quality.decreaseQualityByOne();
+
+        assertEquals(9, actual.value());
     }
 
     @Test
     void qualityDecreasesCannotBeNegative() {
-        int actual = Quality.decreaseQualityByOne(0);
-        assertEquals(0, actual);
+        Quality quality = new Quality(0);
+
+        Quality actual = quality.decreaseQualityByOne();
+
+        assertEquals(0, actual.value());
     }
 
     @Test
     void qualityDecreasesTimes() {
-        int actual = Quality.decreaseQualityTimes(10, 2);
-        assertEquals(8, actual);
+        Quality quality = new Quality(10);
+
+        Quality actual = quality.decreaseQualityTimes(2);
+
+        assertEquals(8, actual.value());
     }
 
     @Test
     void qualityDecreasesTimesCannotBeNegative() {
-        int actual = Quality.decreaseQualityTimes(0, 2);
-        assertEquals(0, actual);
+        Quality quality = new Quality(0);
+
+        Quality actual = quality.decreaseQualityTimes(2);
+
+        assertEquals(0, actual.value());
     }
 
     @Test
     void qualityIncreasesByOne() {
-        int actual = Quality.increaseQualityByOne(10);
-        assertEquals(11, actual);
+        Quality quality = new Quality(10);
+
+        Quality actual = quality.increaseQualityByOne();
+
+        assertEquals(11, actual.value());
     }
 
     @Test
     void qualityIncreasesCannotExceedFifty() {
-        int actual = Quality.increaseQualityByOne(50);
-        assertEquals(50, actual);
+        Quality quality = new Quality(50);
+
+        Quality actual = quality.increaseQualityByOne();
+
+        assertEquals(50, actual.value());
     }
 
     @Test
     void qualityIncreasesTimes() {
-        int actual = Quality.increaseQualityTimes(10, 2);
-        assertEquals(12, actual);
+        Quality quality = new Quality(10);
+
+        Quality actual = quality.increaseQualityTimes(2);
+
+        assertEquals(12, actual.value());
     }
 
     @Test
     void qualityIncreasesTimesCannotExceedFifty() {
-        int actual = Quality.increaseQualityTimes(50, 2);
-        assertEquals(50, actual);
+        Quality quality = new Quality(50);
+
+        Quality actual = quality.increaseQualityTimes(2);
+
+        assertEquals(50, actual.value());
     }
 
 }

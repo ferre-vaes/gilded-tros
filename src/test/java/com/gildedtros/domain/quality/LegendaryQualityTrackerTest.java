@@ -1,5 +1,6 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -30,21 +31,23 @@ class LegendaryQualityTrackerTest {
     @Test
     @DisplayName("updateQuality should not change quality for legendary items")
     void updateQualityRemainsSame() {
-        int initialQuality = 80;
+        Quality initialQuality = new Quality(80);
+        SellIn sellIn = new SellIn(5);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, 5);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(80, updatedQuality);
+        assertEquals(80, updatedQuality.value());
     }
 
     @Test
     @DisplayName("updateQuality should return legendary quality 80 for any input")
     void updateQualityAlwaysReturnsLegendaryQuality() {
-        int initialQuality = 50;
+        Quality initialQuality = new Quality(50);
+        SellIn sellIn = new SellIn(10);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, 10);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(80, updatedQuality);
+        assertEquals(80, updatedQuality.value());
     }
 
 }

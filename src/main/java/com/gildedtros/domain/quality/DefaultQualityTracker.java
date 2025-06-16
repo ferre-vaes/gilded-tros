@@ -1,7 +1,6 @@
 package com.gildedtros.domain.quality;
 
-import static com.gildedtros.domain.quality.Quality.decreaseQualityByOne;
-import static com.gildedtros.domain.quality.Quality.decreaseQualityTimes;
+import com.gildedtros.domain.SellIn;
 
 public class DefaultQualityTracker implements QualityTracker {
 
@@ -11,12 +10,12 @@ public class DefaultQualityTracker implements QualityTracker {
     }
 
     @Override
-    public int updateQuality(int quality, int sellIn) {
-        if (isSellInNegativeOrZero(sellIn)) {
-            return decreaseQualityTimes(quality, 2);
+    public Quality updateQuality(Quality quality, SellIn sellIn) {
+        if (isSellInNegativeOrZero(sellIn.value())) {
+            return quality.decreaseQualityTimes(2);
         }
 
-        return decreaseQualityByOne(quality);
+        return quality.decreaseQualityByOne();
     }
 
     private static boolean isSellInNegativeOrZero(int sellIn) {

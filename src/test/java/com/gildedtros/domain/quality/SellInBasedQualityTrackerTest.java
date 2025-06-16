@@ -1,5 +1,6 @@
 package com.gildedtros.domain.quality;
 
+import com.gildedtros.domain.SellIn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -43,45 +44,45 @@ class SellInBasedQualityTrackerTest {
     @Test
     @DisplayName("updateQuality increases quality by 1 when sellIn is greater than 10")
     void updateQualityIncreasesByOne() {
-        int initialQuality = 10;
-        int sellIn = 15;
+        Quality initialQuality = new Quality(10);
+        SellIn sellIn = new SellIn(15);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, sellIn);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(11, updatedQuality);
+        assertEquals(11, updatedQuality.value());
     }
 
     @Test
     @DisplayName("updateQuality increases quality by 2 when sellIn is less or equal than 10")
     void updateQualityIncreasesByTwo() {
-        int initialQuality = 10;
-        int sellIn = 10;
+        Quality initialQuality = new Quality(10);
+        SellIn sellIn = new SellIn(10);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, sellIn);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(12, updatedQuality);
+        assertEquals(12, updatedQuality.value());
     }
 
     @Test
     @DisplayName("updateQuality increases quality by 3 when sellIn is less or equal than 5")
     void updateQualityIncreasesByThree() {
-        int initialQuality = 10;
-        int sellIn = 5;
+        Quality initialQuality = new Quality(10);
+        SellIn sellIn = new SellIn(5);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, sellIn);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(13, updatedQuality);
+        assertEquals(13, updatedQuality.value());
     }
 
     @Test
     @DisplayName("updateQuality drops quality to zero when sellIn is zero")
     void updateQualityDrops() {
-        int initialQuality = 10;
-        int sellIn = 0;
+        Quality initialQuality = new Quality(10);
+        SellIn sellIn = new SellIn(0);
 
-        int updatedQuality = tracker.updateQuality(initialQuality, sellIn);
+        Quality updatedQuality = tracker.updateQuality(initialQuality, sellIn);
 
-        assertEquals(0, updatedQuality);
+        assertEquals(0, updatedQuality.value());
     }
 
 }
