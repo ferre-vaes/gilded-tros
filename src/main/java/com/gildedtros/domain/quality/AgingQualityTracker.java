@@ -2,6 +2,8 @@ package com.gildedtros.domain.quality;
 
 import java.util.List;
 
+import static com.gildedtros.domain.quality.Quality.increaseQualityByOne;
+
 public class AgingQualityTracker implements QualityTracker {
 
     private static final List<String> AGING_ITEMS = List.of(
@@ -15,6 +17,6 @@ public class AgingQualityTracker implements QualityTracker {
 
     @Override
     public int updateQuality(int quality, int sellIn) {
-        return Quality.increaseQuality(quality);
+        return increaseQualityByOne(quality);
     }
 }

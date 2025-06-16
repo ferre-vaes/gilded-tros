@@ -23,11 +23,25 @@ class GildedTros {
 
     public void updateQuality() {
         for (Item item : items) {
-            QualityTracker qualityTracker = getQualityTracker(item);
-
-            item.quality = qualityTracker.updateQuality(item.quality, item.sellIn);
-            item.sellIn = decreaseSellIn(item.sellIn, item.name);
+            updateQuality(item);
+            updateSellIn(item);
         }
+    }
+
+    private void updateQuality(Item item) {
+        QualityTracker qualityTracker = getQualityTracker(item);
+        item.quality = qualityTracker.updateQuality(item.quality, item.sellIn);
+    }
+
+    private QualityTracker getQualityTracker(Item item) {
+        return qualityTrackers.stream()
+                .filter(tracker -> tracker.canHandle(item.name))
+                .findFirst()
+                .orElseGet(DefaultQualityTracker::new);
+    }
+
+    private void updateSellIn(Item item) {
+        item.sellIn = decreaseSellIn(item.sellIn, item.name);
     }
 
     private int decreaseSellIn(int sellIn, String itemName) {
@@ -38,14 +52,4 @@ class GildedTros {
 
     }
 
-    private QualityTracker getQualityTracker(Item item) {
-        return qualityTrackers.stream()
-                .filter(tracker -> tracker.canHandle(item.name))
-                .findFirst()
-                .orElseGet(DefaultQualityTracker::new);
-    }
-
-    public Item[] getInventory() {
-        return items;
-    }
 }

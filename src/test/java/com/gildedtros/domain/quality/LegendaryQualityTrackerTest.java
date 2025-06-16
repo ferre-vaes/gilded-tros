@@ -30,11 +30,21 @@ class LegendaryQualityTrackerTest {
     @Test
     @DisplayName("updateQuality should not change quality for legendary items")
     void updateQualityRemainsSame() {
-        int initialQuality = 10;
+        int initialQuality = 80;
 
         int updatedQuality = tracker.updateQuality(initialQuality, 5);
 
-        assertEquals(10, updatedQuality);
+        assertEquals(80, updatedQuality);
+    }
+
+    @Test
+    @DisplayName("updateQuality should return legendary quality 80 for any input")
+    void updateQualityAlwaysReturnsLegendaryQuality() {
+        int initialQuality = 50;
+
+        int updatedQuality = tracker.updateQuality(initialQuality, 10);
+
+        assertEquals(80, updatedQuality);
     }
 
 }

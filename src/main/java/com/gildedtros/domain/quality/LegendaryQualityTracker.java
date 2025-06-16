@@ -4,6 +4,8 @@ import java.util.List;
 
 public class LegendaryQualityTracker implements QualityTracker {
 
+    private static final int LEGENDARY_QUALITY = 80;
+
     private static final List<String> LEGENDARY_ITEMS = List.of(
             "B-DAWG Keychain"
     );
@@ -15,7 +17,6 @@ public class LegendaryQualityTracker implements QualityTracker {
 
     @Override
     public int updateQuality(int quality, int sellIn) {
-        // Legendary items do not change in quality or sellIn
-        return quality;
+        return LEGENDARY_QUALITY;
     }
 }

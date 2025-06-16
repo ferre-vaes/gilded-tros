@@ -8,13 +8,13 @@ class QualityTest {
 
     @Test
     void qualityDecreasesByOne() {
-        int actual = Quality.decreaseQuality(10);
+        int actual = Quality.decreaseQualityByOne(10);
         assertEquals(9, actual);
     }
 
     @Test
     void qualityDecreasesCannotBeNegative() {
-        int actual = Quality.decreaseQuality(0);
+        int actual = Quality.decreaseQualityByOne(0);
         assertEquals(0, actual);
     }
 
@@ -32,13 +32,13 @@ class QualityTest {
 
     @Test
     void qualityIncreasesByOne() {
-        int actual = Quality.increaseQuality(10);
+        int actual = Quality.increaseQualityByOne(10);
         assertEquals(11, actual);
     }
 
     @Test
     void qualityIncreasesCannotExceedFifty() {
-        int actual = Quality.increaseQuality(50);
+        int actual = Quality.increaseQualityByOne(50);
         assertEquals(50, actual);
     }
 

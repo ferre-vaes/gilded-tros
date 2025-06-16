@@ -20,9 +20,7 @@ class GildedTrosTest {
         app.updateQuality();
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(0, inventory[0].quality);
+        assertEquals(0, items[0].quality);
     }
 
     @Test
@@ -36,25 +34,21 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(50, inventory[0].quality);
+        assertEquals(50, items[0].quality);
     }
 
     @Test
     @DisplayName("Quality of Good Wine increases by 1 each day")
     void qualityItemsIncreaseInQuality() {
         Item[] items = new Item[] {
-            new Item("Good Wine", 2, 0),
+            new Item("Good Wine", 2, 10),
         };
 
         GildedTros app = new GildedTros(items);
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(1, inventory[0].quality);
+        assertEquals(11, items[0].quality);
     }
 
     @Test
@@ -68,10 +62,8 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(9, inventory[0].quality);
-        assertEquals(1, inventory[0].sellIn);
+        assertEquals(9, items[0].quality);
+        assertEquals(1, items[0].sellIn);
     }
 
     @Test
@@ -85,9 +77,7 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(8, inventory[0].quality);
+        assertEquals(8, items[0].quality);
     }
 
     @Test
@@ -99,12 +89,10 @@ class GildedTrosTest {
 
         GildedTros app = new GildedTros(items);
 
-        app.updateQuality();
+        app.updateQuality();;
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(20, inventory[0].quality);
-        assertEquals(10, inventory[0].sellIn);
+        assertEquals(80, items[0].quality);
+        assertEquals(10, items[0].sellIn);
     }
 
     @Test
@@ -118,9 +106,7 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(21, inventory[0].quality);
+        assertEquals(21, items[0].quality);
     }
 
     @Test
@@ -134,9 +120,7 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(22, inventory[0].quality);
+        assertEquals(22, items[0].quality);
     }
 
     @Test
@@ -150,9 +134,7 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(23, inventory[0].quality);
+        assertEquals(23, items[0].quality);
     }
 
     @Test
@@ -166,9 +148,7 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(0, inventory[0].quality);
+        assertEquals(0, items[0].quality);
     }
 
     @Test
@@ -184,11 +164,9 @@ class GildedTrosTest {
 
         app.updateQuality();
 
-        Item[] inventory = app.getInventory();
-
-        assertEquals(4, inventory[0].quality);
-        assertEquals(4, inventory[1].quality);
-        assertEquals(4, inventory[2].quality);
+        assertEquals(4, items[0].quality);
+        assertEquals(4, items[1].quality);
+        assertEquals(4, items[2].quality);
     }
 
 }

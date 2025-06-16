@@ -2,6 +2,8 @@ package com.gildedtros.domain.quality;
 
 import java.util.List;
 
+import static com.gildedtros.domain.quality.Quality.decreaseQualityTimes;
+
 public class SmellingQualityTracker implements QualityTracker {
 
     private static final List<String> SMELLY_ITEMS = List.of(
@@ -17,6 +19,6 @@ public class SmellingQualityTracker implements QualityTracker {
 
     @Override
     public int updateQuality(int quality, int sellIn) {
-        return Quality.decreaseQualityTimes(quality, 2);
+        return decreaseQualityTimes(quality, 2);
     }
 }

@@ -2,6 +2,9 @@ package com.gildedtros.domain.quality;
 
 import java.util.List;
 
+import static com.gildedtros.domain.quality.Quality.increaseQualityByOne;
+import static com.gildedtros.domain.quality.Quality.increaseQualityTimes;
+
 public class SellInBasedQualityTracker implements QualityTracker{
 
     private static final List<String> SELL_IN_BASED_ITEMS = List.of(
@@ -21,14 +24,14 @@ public class SellInBasedQualityTracker implements QualityTracker{
         }
 
         if (sellIn <= 10 && sellIn > 5) {
-            return Quality.increaseQualityTimes(quality, 2);
+            return increaseQualityTimes(quality, 2);
         }
 
         if (sellIn <= 5) {
-            return Quality.increaseQualityTimes(quality, 3);
+            return increaseQualityTimes(quality, 3);
         }
 
-        return Quality.increaseQuality(quality);
+        return increaseQualityByOne(quality);
     }
 
 }
