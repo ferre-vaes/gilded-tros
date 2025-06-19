@@ -1,10 +1,11 @@
 package com.gildedtros;
 
+
 import com.gildedtros.application.GildedTros;
 import com.gildedtros.application.Item;
 
 public class TexttestFixture {
-    public static void main(String[] args) {
+    public static String testDays(Integer days) {
         System.out.println("AXXES CODE KATA - GILDED TROS");
 
         Item[] items = new Item[] {
@@ -18,25 +19,25 @@ public class TexttestFixture {
                 new Item("Backstage passes for HAXX", 5, 49),
                 // these smelly items do not work properly yet
                 new Item("Duplicate Code", 3, 6),
-                new Item("Long Methods", 3, 6),
-                new Item("Ugly Variable Names", 3, 6) };
+                new Item("Long Methods", 3, 1),
+                new Item("Ugly Variable Names", 0, 6) };
 
         GildedTros app = new GildedTros(items);
 
-        int days = 2;
-        if (args.length > 0) {
-            days = Integer.parseInt(args[0]) + 1;
-        }
-
+        final StringBuilder result = new StringBuilder();
         for (int i = 0; i < days; i++) {
-            System.out.println("-------- day " + i + " --------");
-            System.out.println("name, sellIn, quality");
+            result.append("-------- day " + i + " -------- \n");
+            result.append("name, sellIn, quality \n");
             for (Item item : items) {
-                System.out.println(item);
+                result.append(item);
+                result.append("\n");
             }
-            System.out.println();
+            result.append("\n");
             app.updateQuality();
         }
+
+        return result.toString();
     }
 
 }
+
